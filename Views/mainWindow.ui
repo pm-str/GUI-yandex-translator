@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>655</width>
+    <height>213</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Form1</string>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
+  </property>
+  <widget class="QTextBrowser" name="text">
+   <property name="geometry">
+    <rect>
+     <x>1</x>
+     <y>30</y>
+     <width>323</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="translation">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>30</y>
+     <width>323</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAlwaysOff</enum>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustIgnored</enum>
+   </property>
+   <property name="autoScroll">
+    <bool>true</bool>
+   </property>
+   <property name="verticalScrollMode">
+    <enum>QAbstractItemView::ScrollPerItem</enum>
+   </property>
+   <property name="horizontalScrollMode">
+    <enum>QAbstractItemView::ScrollPerItem</enum>
+   </property>
+   <property name="isWrapping" stdset="0">
+    <bool>false</bool>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="swapl">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>0</y>
+     <width>31</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/newPrefix/1486387886_exchange.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="lang_from">
+   <property name="geometry">
+    <rect>
+     <x>122</x>
+     <y>1</y>
+     <width>151</width>
+     <height>28</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="lang_to">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>1</y>
+     <width>151</width>
+     <height>28</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="exchange.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>swapl</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>swap_langs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>326</x>
+     <y>14</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>106</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>text</sender>
+   <signal>textChanged()</signal>
+   <receiver>Form</receiver>
+   <slot>ready()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>161</x>
+     <y>120</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>256</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>swapl</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>ready()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>326</x>
+     <y>14</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>107</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lang_from</sender>
+   <signal>activated(int)</signal>
+   <receiver>Form</receiver>
+   <slot>ready()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>197</x>
+     <y>14</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>107</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lang_to</sender>
+   <signal>activated(int)</signal>
+   <receiver>Form</receiver>
+   <slot>ready()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>455</x>
+     <y>14</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>107</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>translation</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>Form</receiver>
+   <slot>add_by_api()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>491</x>
+     <y>120</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>326</x>
+     <y>107</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>swap_langs()</slot>
+  <slot>ready()</slot>
+  <slot>add_by_api()</slot>
+ </slots>
+</ui>

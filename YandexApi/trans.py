@@ -10,8 +10,7 @@ def trans_request(lang, text):
     if r.status_code == 200 and r.json().get('code') == 200:
         ans['ans'] = r.json().get('text', [])
     else:
-        print(r.json())
-        ans['error'] = 'An error was occurred.'
+        ans['error'] = r.json().get('message', '') or 'An error was occurred.'
     return ans
 
 '''{

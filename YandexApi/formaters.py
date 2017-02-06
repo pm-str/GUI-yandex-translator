@@ -4,11 +4,10 @@ from PyQt5.QtWidgets import QListWidgetItem
 
 def output(trans, dict):
     data = []
-    w_tr_tl = {}
 
     # print(dict)
     if 'error' in trans:
-        print(dict['error'])
+        print(trans['error'])
     else:
         text = trans['ans'][0]
         item = QListWidgetItem()

@@ -7,7 +7,8 @@ data = {}
 def add_word(word, meaning, tr=''):
     data['name'] = word
     data['translation'] = meaning
-    data['transcription'] = '[ ' + tr + ' ]'
+    if tr.strip() not in ['-', '', None]:
+        data['transcription'] = '[ ' + tr + ' ]'
 
     ans = requests.post(dictionary.apiWordlist, json=data,
                         auth=requests.auth.HTTPBasicAuth(dictionary.login, dictionary.pswd))

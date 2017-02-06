@@ -22,9 +22,8 @@ langs = {
     'монгольский': 'mn', 'маратхи': 'mr', 'иврит': 'he', 'амхарский': 'am', 'голландский': 'nl',
     'киргизский': 'ky'
 }
-
-DICT_KEY =
-TR_KEY =
+DICT_KEY = ''
+TR_KEY = ''
 
 DictLookup = 'https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key={}&lang={lang}&text={text}' \
     .format(DICT_KEY, lang='{lang}', text='{text}')

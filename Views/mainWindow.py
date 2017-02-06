@@ -21,7 +21,9 @@ class Ui_Form(object):
         Form.setWindowOpacity(1.0)
         self.text = QtWidgets.QTextBrowser(Form)
         self.text.setGeometry(QtCore.QRect(1, 30, 323, 181))
+        self.text.setAutoFormatting(QtWidgets.QTextEdit.AutoNone)
         self.text.setReadOnly(False)
+        self.text.setAcceptRichText(False)
         self.text.setObjectName("text")
         self.translation = QtWidgets.QListWidget(Form)
         self.translation.setGeometry(QtCore.QRect(330, 30, 323, 181))
@@ -42,7 +44,7 @@ class Ui_Form(object):
         self.translation.setObjectName("translation")
         self.swapl = QtWidgets.QPushButton(Form)
         self.swapl.setGeometry(QtCore.QRect(310, 0, 31, 29))
-        self.swapl.setStyleSheet("border-image: url(:/newPrefix/1486387886_exchange.png);")
+        self.swapl.setStyleSheet("border-image: url(:/newPrefix/Views/1486387886_exchange.png);")
         self.swapl.setText("")
         self.swapl.setObjectName("swapl")
         self.lang_from = QtWidgets.QComboBox(Form)
@@ -64,5 +66,10 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form1"))
+        self.text.setHtml(_translate("Form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
 
 import exchange_rc

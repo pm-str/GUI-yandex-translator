@@ -2,7 +2,7 @@
 import sys
 from time import sleep
 
-from PyQt5 import QtCore, QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from Dict.api import add_word
@@ -22,6 +22,7 @@ class UpdateTr(QtCore.QThread):
         QtCore.QThread.__init__(self)
         self.lang = lang
         self.text = text
+
 
     def run(self):
         sleep(yandexAPI.update_time)
@@ -47,6 +48,10 @@ class MainWindow(QMainWindow):
         self.langs_to.remove('русский')
         self.langs_to.insert(0, 'русский')
         self.ui.lang_to.addItems(self.langs_to)
+
+        self.shortcut = QtWidgets.QShortcut(QtGui.QKeySequence("Ctrl+F"), self)
+        self.shortcut.activated.connect(self.swap_langs)
+        self.shortcut.activated.connect(self.ready)
 
     def swap_langs(self):
         self.langs_from, self.langs_to = self.langs_to, self.langs_from

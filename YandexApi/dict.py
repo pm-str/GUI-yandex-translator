@@ -1,6 +1,6 @@
 import requests
 
-from conf.yandexAPI import DictLookup
+from conf.APIconf import DictLookup
 
 
 def dict_request(lang, text):

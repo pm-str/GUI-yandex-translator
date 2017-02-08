@@ -130,6 +130,38 @@ p, li { white-space: pre-wrap; }
     </rect>
    </property>
   </widget>
+  <widget class="QPushButton" name="sound_te">
+   <property name="geometry">
+    <rect>
+     <x>1</x>
+     <y>2</y>
+     <width>25</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/newPrefix/Views/1486598014_volume-24.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="sound_tr">
+   <property name="geometry">
+    <rect>
+     <x>625</x>
+     <y>2</y>
+     <width>25</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/newPrefix/Views/1486598014_volume-24.png);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources>
   <include location="../exchange.qrc"/>
@@ -231,10 +263,44 @@ p, li { white-space: pre-wrap; }
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>sound_te</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>sound_text()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>15</x>
+     <y>13</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>327</x>
+     <y>106</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sound_tr</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>sound_translate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>13</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>327</x>
+     <y>106</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>swap_langs()</slot>
   <slot>ready()</slot>
   <slot>add_by_api()</slot>
+  <slot>sound_text()</slot>
+  <slot>sound_translate()</slot>
  </slots>
 </ui>

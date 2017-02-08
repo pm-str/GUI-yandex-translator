@@ -1,6 +1,6 @@
 import requests
 
-from conf.yandexAPI import DoTr
+from conf.APIconf import DoTr
 
 
 def trans_request(lang, text):

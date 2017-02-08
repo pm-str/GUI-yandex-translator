@@ -53,6 +53,16 @@ class Ui_Form(object):
         self.lang_to = QtWidgets.QComboBox(Form)
         self.lang_to.setGeometry(QtCore.QRect(380, 1, 151, 28))
         self.lang_to.setObjectName("lang_to")
+        self.sound_te = QtWidgets.QPushButton(Form)
+        self.sound_te.setGeometry(QtCore.QRect(1, 2, 25, 25))
+        self.sound_te.setStyleSheet("border-image: url(:/newPrefix/Views/1486598014_volume-24.png);")
+        self.sound_te.setText("")
+        self.sound_te.setObjectName("sound_te")
+        self.sound_tr = QtWidgets.QPushButton(Form)
+        self.sound_tr.setGeometry(QtCore.QRect(625, 2, 25, 25))
+        self.sound_tr.setStyleSheet("border-image: url(:/newPrefix/Views/1486598014_volume-24.png);")
+        self.sound_tr.setText("")
+        self.sound_tr.setObjectName("sound_tr")
 
         self.retranslateUi(Form)
         self.swapl.clicked.connect(Form.swap_langs)
@@ -61,6 +71,8 @@ class Ui_Form(object):
         self.lang_from.activated['int'].connect(Form.ready)
         self.lang_to.activated['int'].connect(Form.ready)
         self.translation.doubleClicked['QModelIndex'].connect(Form.add_by_api)
+        self.sound_te.clicked.connect(Form.sound_text)
+        self.sound_tr.clicked.connect(Form.sound_translate)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):

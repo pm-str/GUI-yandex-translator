@@ -295,6 +295,38 @@ p, li { white-space: pre-wrap; }
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>lang_to</sender>
+   <signal>activated(QString)</signal>
+   <receiver>Form</receiver>
+   <slot>change_langs_to()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>455</x>
+     <y>14</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>327</x>
+     <y>106</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lang_from</sender>
+   <signal>activated(QString)</signal>
+   <receiver>Form</receiver>
+   <slot>change_langs_from()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>197</x>
+     <y>14</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>327</x>
+     <y>106</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>swap_langs()</slot>
@@ -302,5 +334,7 @@ p, li { white-space: pre-wrap; }
   <slot>add_by_api()</slot>
   <slot>sound_text()</slot>
   <slot>sound_translate()</slot>
+  <slot>change_langs_to()</slot>
+  <slot>change_langs_from()</slot>
  </slots>
 </ui>

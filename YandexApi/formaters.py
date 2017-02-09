@@ -7,7 +7,9 @@ def output(trans, dict):
 
     # print(dict)
     if 'error' in trans:
-        print(trans['error'])
+        item = QListWidgetItem()
+        item.setText(trans['error'])
+        data.append(item)
     else:
         text = trans['ans'][0]
         item = QListWidgetItem()
@@ -16,7 +18,9 @@ def output(trans, dict):
         data.append(item)
 
     if 'error' in dict:
-        print(dict['error'])
+        item = QListWidgetItem()
+        item.setText(dict['error'])
+        data.append(item)
     else:
         dict = dict.get('ans', [])
         for i in dict:

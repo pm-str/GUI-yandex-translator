@@ -14,6 +14,7 @@ from conf import APIconf
 import urllib
 import pygame
 import os
+import shutil
 
 
 class Options(QtCore.QThread):
@@ -70,12 +71,29 @@ class MainWindow(QMainWindow):
         self.speech_trans = QtWidgets.QShortcut(QtGui.QKeySequence("Alt+2"), self)
         self.speech_trans.activated.connect(self.sound_translate)
 
+        # creating directory for temp sound files
+        if not os.path.isdir('./Temp'):
+            os.mkdir(os.getcwd() + '/Temp')
+
+    def closeEvent(self, *args, **kwargs):
+        super(QMainWindow, self).closeEvent(*args, **kwargs)
+        if os.path.isdir('./Temp'):
+            shutil.rmtree(os.getcwd() + '/Temp')
+
     def swap_langs(self):
         self.langs_from, self.langs_to = self.langs_to, self.langs_from
         self.ui.lang_from.clear()
         self.ui.lang_to.clear()
         self.ui.lang_from.addItems(self.langs_from)
         self.ui.lang_to.addItems(self.langs_to)
+
+    def change_langs_to(self, *args):
+        self.langs_to.remove(args[0])
+        self.langs_to.insert(0, args[0])
+
+    def change_langs_from(self, *args):
+        self.langs_from.remove(args[0])
+        self.langs_from.insert(0, args[0])
 
     def update_ready(self, param):
         self.ui.translation.clear()
@@ -122,14 +140,17 @@ class MainWindow(QMainWindow):
 
     cur_sound = None
 
-    def play_sound(self):
-        pygame.mixer.init()
-        pygame.mixer.music.load("./Temp/speech.mp3")
-        pygame.mixer.music.play()
+    def play_sound(self, *args):
+        try:
+            pygame.mixer.init()
+            pygame.mixer.music.load(os.path.abspath(APIconf.audio_file))
+            pygame.mixer.music.play()
+        except pygame.error as r:
+            print('Traceback:', r)
 
     def sound_text(self):
         text = self.ui.text.toPlainText()
-        lang = APIconf.langs[self.ui.lang_from.currentText()] + '-' + APIconf.langs[self.ui.lang_to.currentText()]
+        lang = APIconf.langs[self.ui.lang_from.currentText()]
 
         if text:
             if self.cur_sound and self.cur_sound.isRunning():
@@ -139,8 +160,11 @@ class MainWindow(QMainWindow):
             self.cur_sound.changed.connect(self.play_sound)
 
     def sound_translate(self):
-        text = self.ui.translation.item(0).text()
-        lang = APIconf.langs[self.ui.lang_from.currentText()] + '-' + APIconf.langs[self.ui.lang_to.currentText()]
+        text = getattr(self.ui.translation.currentItem(), 'text', lambda: None)()
+        if not text:
+            text = getattr(self.ui.translation.item(0), 'text', lambda: None)()
+
+        lang = APIconf.langs[self.ui.lang_to.currentText()]
 
         if text:
             if self.cur_sound and self.cur_sound.isRunning():
@@ -157,5 +181,6 @@ app.setApplicationName('GUI')
 form = MainWindow()
 form.setWindowTitle('Translator')
 form.show()
-
 sys.exit(app.exec_())
+
+

@@ -73,6 +73,8 @@ class Ui_Form(object):
         self.translation.doubleClicked['QModelIndex'].connect(Form.add_by_api)
         self.sound_te.clicked.connect(Form.sound_text)
         self.sound_tr.clicked.connect(Form.sound_translate)
+        self.lang_to.activated['QString'].connect(Form.change_langs_to)
+        self.lang_from.activated['QString'].connect(Form.change_langs_from)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):

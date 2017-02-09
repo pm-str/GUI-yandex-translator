@@ -34,4 +34,6 @@ DoTr = 'https://translate.yandex.net/api/v1.5/tr.json/translate?key={}&text={tex
 update_time = 0.5
 
 # link to download speech from google translator
-audio_link = '''wget -q -U Mozilla -O Temp/speech.mp3 post "http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q={}&tl={}"'''
+audio_link = '''wget -q -U Mozilla -O Temp/speech.mp3 post "http://translate.google.com/translate_tts?ie=UTF-8&total=1&idx=0&textlen=32&client=tw-ob&q={}&tl={}-gb"'''
+
+audio_file = './Temp/speech.mp3'

@@ -7,11 +7,15 @@ def dict_request(lang, text):
     body = DictLookup.format(lang=lang, text='+'.join(text.split()))
     ans = {}
 
-    r = requests.post(body)
-    if r.status_code == 200:
-        ans['ans'] = r.json().get('def')
+    try:
+        r = requests.post(body)
+    except (requests.ConnectionError,) as r:
+        ans['error'] = 'Dictionary: Check your internet connections.'
     else:
-        ans['error'] = 'An error was occurred.'
+        if r.status_code == 200:
+            ans['ans'] = r.json().get('def')
+        else:
+            ans['error'] = 'Dictionary: An error was occurred.'
     return ans
 
 
